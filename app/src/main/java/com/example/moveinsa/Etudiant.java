@@ -15,8 +15,7 @@ public class Etudiant {
     private String voeu5;
 
     public Etudiant(){}
-    public Etudiant(int id, String nom, String prenom, String classe, int semestre, String voeu1, String voeu2, String voeu3, String voeu4, String voeu5){
-        this.id = id;
+    public Etudiant(String nom, String prenom, String classe, int semestre, String voeu1, String voeu2, String voeu3, String voeu4, String voeu5){
         this.nom = nom;
         this.prenom = prenom;
         this.classe = classe;

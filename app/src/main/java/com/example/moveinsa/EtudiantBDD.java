@@ -2,6 +2,7 @@ package com.example.moveinsa;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public class EtudiantBDD {
@@ -87,5 +88,38 @@ public class EtudiantBDD {
     public int removeEtudiantWithID(int id) {
         //Suppression d'un livre de la BDD grâce à l'ID
         return bdd.delete(TABLE_ETUDIANT, COL_ID + " = " + id, null);
+    }
+
+    public Etudiant getEtudiantClasse(String classe) {
+        //Récupère dans un Cursor les valeurs correspondant à un étudiant contenu dans la BDD (ici on sélectionne l'étudiant grâce à sa classe)
+        Cursor c = bdd.query(TABLE_ETUDIANT, new String[]{COL_ID, COL_NOM, COL_PRENOM, COL_CLASSE, COL_SEMESTRE, COL_VOEU1, COL_VOEU2, COL_VOEU3, COL_VOEU4, COL_VOEU5}, COL_CLASSE + " LIKE \"" + classe + "\"", null, null, null, null);
+        return cursorToEtudiant(c);
+    }
+
+    //Cette méthode permet de convertir un cursor en un étudiant
+    private Etudiant cursorToEtudiant(Cursor c){
+        //si aucun élément n'a été retourné dans la requête, on renvoie null
+        if (c.getCount() == 0)
+            return null;
+
+        //Sinon on se place sur le premier élément
+        c.moveToFirst();
+        //On crée un etudiant
+        Etudiant etudiant = new Etudiant();
+        //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
+        etudiant.setId(c.getInt(NUM_COL_ID));
+        etudiant.setNom(c.getString(NUM_COL_NOM));
+        etudiant.setPrenom(c.getString(NUM_COL_PRENOM));
+        etudiant.setClasse(c.getString(NUM_COL_CLASSE));
+        etudiant.setSemestre(c.getInt(NUM_COL_SEMESTRE));
+        etudiant.setVoeu1(c.getString(NUM_COL_VOEU1));
+        etudiant.setVoeu2(c.getString(NUM_COL_VOEU2));
+        etudiant.setVoeu3(c.getString(NUM_COL_VOEU3));
+        etudiant.setVoeu4(c.getString(NUM_COL_VOEU4));
+        etudiant.setVoeu5(c.getString(NUM_COL_VOEU5));
+        //On ferme le cursor
+        c.close();
+        //On retourne le etudiant
+        return etudiant;
     }
 }
