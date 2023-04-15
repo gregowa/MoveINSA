@@ -6,8 +6,7 @@ public class Partenaire {
     private String ville;
 
     public Partenaire(){}
-    public Partenaire(int id, String ecole, String ville){
-        this.id = id;
+    public Partenaire(String ecole, String ville){
         this.ecole = ecole;
         this.ville = ville;
     }

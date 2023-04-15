@@ -20,9 +20,9 @@ public class OffreBDD {
     private static final int NUM_COL_SEMESTRE = 4;
 
     private static final String CREATE_TABLE_OFFRE = "CREATE TABLE " + TABLE_OFFRE + " ("
-            + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_PARTENAIRE + " TEXT NOT NULL, "
+            + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_PARTENAIRE + " INTEGER, "
             + COL_DISPOSITIF + " TEXT NOT NULL, " + COL_CLASSE + " TEXT NOT NULL, "
-            + COL_SEMESTRE + " TEXT NOT NULL);";
+            + COL_SEMESTRE + " TEXT NOT NULL, " + " FOREIGN KEY ("+COL_PARTENAIRE+") REFERENCES TABLE_PARTENAIRE(COL_ID);";
 
     private SQLiteDatabase bdd;
     private MaBaseSQLite maBaseSQLite;
@@ -50,7 +50,7 @@ public class OffreBDD {
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
         //on lui ajoute une valeur associée à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
-        values.put(COL_PARTENAIRE, offre.getPartenaire().getId());
+        values.put(COL_PARTENAIRE, offre.getPartenaire_id());
         values.put(COL_DISPOSITIF, offre.getDispositif());
         values.put(COL_CLASSE, offre.getClasse());
         values.put(COL_SEMESTRE, offre.getSemestre());
@@ -62,7 +62,7 @@ public class OffreBDD {
         //La mise à jour d'une offre dans la BDD fonctionne plus ou moins comme une insertion
         //il faut simplement préciser quelle offre on doit mettre à jour grâce à l'ID
         ContentValues values = new ContentValues();
-        values.put(COL_PARTENAIRE, offre.getPartenaire().getId());
+        values.put(COL_PARTENAIRE, offre.getPartenaire_id());
         values.put(COL_DISPOSITIF, offre.getDispositif());
         values.put(COL_CLASSE, offre.getClasse());
         values.put(COL_SEMESTRE, offre.getSemestre());
