@@ -19,6 +19,11 @@ public class OffreBDD {
     private static final String COL_SEMESTRE = "Semestre";
     private static final int NUM_COL_SEMESTRE = 4;
 
+    private static final String CREATE_TABLE_OFFRE = "CREATE TABLE " + TABLE_OFFRE + " ("
+            + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_PARTENAIRE + " TEXT NOT NULL, "
+            + COL_DISPOSITIF + " TEXT NOT NULL, " + COL_CLASSE + " TEXT NOT NULL, "
+            + COL_SEMESTRE + " TEXT NOT NULL);";
+
     private SQLiteDatabase bdd;
     private MaBaseSQLite maBaseSQLite;
 

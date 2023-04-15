@@ -15,6 +15,10 @@ public class PartenaireBDD {
     private static final String COL_VILLE = "Ville";
     private static final int NUM_COL_VILLE = 2;
 
+    private static final String CREATE_TABLE_PARTENAIRE = "CREATE TABLE " + TABLE_PARTENAIRE + " ("
+            + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_ECOLE + " TEXT NOT NULL, "
+            + COL_VILLE + " TEXT NOT NULL);";
+
     private SQLiteDatabase bdd;
     private MaBaseSQLite maBaseSQLite;
 
