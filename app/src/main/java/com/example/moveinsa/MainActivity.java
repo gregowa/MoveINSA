@@ -10,7 +10,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         EtudiantBDD etudiantBDD = new EtudiantBDD(this);
         PartenaireBDD partenaireBDD = new PartenaireBDD(this);
@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
         //On ouvre la base de données pour écrire dedans
         etudiantBDD.open();
+        partenaireBDD.open();
+        offreBDD.open();
 
         //On insère les etudiants que l'on veut de créer
         etudiantBDD.insertEtudiant(new Etudiant("Grégory", "Waille", "MIQ", 6, "0", "0", "0", "0", "0"));
@@ -41,11 +43,13 @@ public class MainActivity extends AppCompatActivity {
 
         //Si un etudiant est retourné (donc si le etudiant à bien été ajouté à la BDD)
         if(etudiantFromBdd != null) {
-            System.out.println(etudiantFromBdd.toString());
+            System.out.println(etudiantFromBdd);
             //On affiche les infos du etudiant dans un Toast
             Toast.makeText(this, etudiantFromBdd.toString(), Toast.LENGTH_LONG).show();
         }
 
         etudiantBDD.close();
+        partenaireBDD.close();
+        offreBDD.close();
     }
 }

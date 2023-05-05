@@ -119,7 +119,7 @@ public class EtudiantBDD {
         etudiant.setVoeu5(c.getString(NUM_COL_VOEU5));
         //On ferme le cursor
         c.close();
-        //On retourne le etudiant
+        //On retourne l'étudiant
         return etudiant;
     }
 }
