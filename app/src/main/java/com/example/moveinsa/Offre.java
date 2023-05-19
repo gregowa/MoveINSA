@@ -13,6 +13,7 @@ public class Offre {
         this.dispositif = dispositif;
         this.classe = classe;
         this.semestre = semestre;
+        // nombre de places offertes
     }
 
     public int getId() {

@@ -9,6 +9,7 @@ public class Partenaire {
     public Partenaire(String ecole, String ville){
         this.ecole = ecole;
         this.ville = ville;
+        // pays aussi
     }
 
     public int getId() {
