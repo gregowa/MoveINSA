@@ -6,14 +6,15 @@ public class Offre {
     private String dispositif;
     private String classe;
     private int semestre;
+    private int effectif;
 
     public Offre(){}
-    public Offre(int partenaire_id, String dispositif, String classe, int semestre){
+    public Offre(int partenaire_id, String dispositif, String classe, int semestre, int effectif){
         this.partenaire_id = partenaire_id;
         this.dispositif = dispositif;
         this.classe = classe;
         this.semestre = semestre;
-        // nombre de places offertes
+        this.effectif = effectif;
     }
 
     public int getId() {
@@ -56,6 +57,14 @@ public class Offre {
         this.semestre = semestre;
     }
 
+    public int getEffectif() {
+        return effectif;
+    }
+
+    public void setEffectif(int effectif) {
+        this.effectif = effectif;
+    }
+
     @Override
     public String toString() {
         return "Offre{" +
@@ -64,6 +73,7 @@ public class Offre {
                 ", dispositif='" + dispositif + '\'' +
                 ", classe='" + classe + '\'' +
                 ", semestre='" + semestre + '\'' +
+                ", effectif='" +  effectif + '\'' +
                 '}';
     }
 }

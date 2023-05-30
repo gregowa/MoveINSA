@@ -30,6 +30,14 @@ public class EtudiantBDD {
     private static final String COL_VOEU5 = "Voeu5";
     private static final int NUM_COL_VOEU5 = 9;
 
+    private static final String CREATE_TABLE_ETUDIANT = "CREATE TABLE " + TABLE_ETUDIANT + " ("
+            + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_NOM + " TEXT NOT NULL, "
+            + COL_PRENOM + " TEXT NOT NULL, " + COL_CLASSE + "TEXT NOT NULL, "
+            + COL_SEMESTRE + " TEXT NOT NULL, " + COL_VOEU1 + "TEXT NOT NULL,"
+            + COL_VOEU2 + " TEXT NOT NULL, " + COL_VOEU3 + "TEXT NOT NULL, "
+            + COL_VOEU3 + " TEXT NOT NULL, " + COL_VOEU4 + "TEXT NOT NULL, "
+            + COL_VOEU5 + " TEXT NOT NULL);";
+
     private SQLiteDatabase bdd;
     private MaBaseSQLite maBaseSQLite;
 
@@ -46,6 +54,7 @@ public class EtudiantBDD {
     public void close() {
         //on ferme l'accès à la BDD
         bdd.close();
+        bdd.execSQL("DROP TABLE IF EXISTS "+NOM_BDD);
     }
 
     public SQLiteDatabase getBDD() {
